@@ -84,7 +84,7 @@ export default function Login() {
           ref={inputRef}
         />
       </div>
-      <div className="bg-white border flex pr-2">
+      <div className="bg-white border flex relative">
    
         <input
           className=" p-2.5 w-full"
@@ -97,12 +97,12 @@ export default function Login() {
         
       
         />
-        <button  className="cursor-pointer"  onClick={() => setShow(!show)}>{show?   <Eye /> :     <EyeOff />}</button>
+        <button  className="cursor-pointer absolute right-0 top-1/4 pr-2"  onClick={() => setShow(prev => !prev)}>{show?   <Eye /> :     <EyeOff />}</button>
       </div>
     
       <button type="submit" className="text-3xl border bg-blue-100 mt-3.5 cursor-pointer
        hover:bg-black hover:text-blue-100 font-bold transition-all p-1.5">{loading ? 
-        <p>loding...</p> :
+        <p>loading...</p> :
         
         <p>login</p>
        }</button>
