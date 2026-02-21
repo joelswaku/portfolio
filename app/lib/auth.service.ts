@@ -37,37 +37,7 @@ export async function signup(
   // ✅ Return BOTH user + token
   return { user, token }
 }
-// export async function login(email: string, password: string) {
-//     // 1. Find user
-//     const user = await prisma.user.findUnique({
-//       where: { email },
-//     })
-  
-//     // 2. If no user
-//     if (!user) {
-//       throw new Error("Invalid credentials")
-//     }
-  
-//     // 3. Compare password
-//     const isMatch = await bcrypt.compare(password, user.password)
-  
-//     if (!isMatch) {
-//       throw new Error("Invalid credentials")
-//     }
-  
-//     // 4. Generate token
-//     const token = generateToken(user.id)
-  
-//     // 5. Return safe user
-//     return {
-//       user: {
-//         id: user.id,
-//         email: user.email,
-//         name: user.name,
-//       },
-//       token,
-//     }
-//   }
+
 export async function login(email: string , password: string) {
     const user =  await prisma.user.findUnique(
         {
@@ -83,10 +53,7 @@ export async function login(email: string , password: string) {
   }
      const isMatch = await bcrypt.compare(password ,user.password);
      if (!isMatch) {
-      return NextResponse.json({
-        message: "invalid credential"
-      
-        })
+    throw new Error("invalid credential")
      }
      const token =   generateTokens(user.id)
      //redirect("/profil")
