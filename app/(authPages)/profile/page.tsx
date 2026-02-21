@@ -1,7 +1,9 @@
+" use client"
+
 import React from 'react'
 
-export default function Profike() {
+export default function page() {
   return (
-    <div>profile</div>
+    <div>page</div>
   )
 }
